@@ -6,6 +6,7 @@
 dist
 build
 eggs
+env
 parts
 bin
 var
@@ -25,3 +26,5 @@ pip-log.txt
 
 #Mr Developer
 .mr.developer.cfg
+
+.idea
