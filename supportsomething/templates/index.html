@@ -4,15 +4,30 @@
 
 {% block main %}
 <div class="row-fluid">
-    <div class="span2">
-        <h1>Support Something</h1>
+    <div class="span4">
+        <div id="stream_canvas">
+            <h1>Support Something</h1>
 
-        <p>
-            <a href="#" class="btn btn-large btn-primary"><i
-                    class="icon-upload icon-white"></i> Upload</a>
-        </p>
+            <p>
+                <a href="#" id="upload"
+                   class="btn btn-large btn-primary"><i
+                        class="icon-upload icon-white"></i>
+                    Upload</a>
+            </p>
+            <ul class="stream">
+                <li>
+                    <img src="https://support-something.s3.amazonaws.com/imgs/10903890-2916-4a29-9fbd-1442a123da1c-Photo_on_2012-06-08_at_14.16.jpg"/>
+                </li>
+                <li>
+                    <img src="https://support-something.s3.amazonaws.com/imgs/10903890-2916-4a29-9fbd-1442a123da1c-Photo_on_2012-06-08_at_14.16.jpg"/>
+                </li>
+                <li>
+                    <img src="https://support-something.s3.amazonaws.com/imgs/10903890-2916-4a29-9fbd-1442a123da1c-Photo_on_2012-06-08_at_14.16.jpg"/>
+                </li>
+            </ul>
+        </div>
     </div>
-    <div class="span10">
+    <div class="span8">
         <div id="map_canvas"></div>
     </div>
 </div>

@@ -10,12 +10,30 @@
     <!-- Le styles -->
     <link href="/static/css/bootstrap.css" rel="stylesheet">
     <style>
-        body {
-            padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+        html, body, #map_canvas {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            overflow-y: hidden;
         }
-        #map_canvas {
-            height:500px;
-            width:100%;
+
+        .span4 {
+            overflow-y: auto;
+        }
+
+        ul.stream {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .stream li {
+            padding: 10px 0;
+        }
+
+        .stream img {
+            max-width: 80%;
         }
     </style>
     <link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
@@ -55,7 +73,12 @@
 <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 <script>window.jQuery || document.write('<script src="/static/js/libs/jquery-1.7.1.min.js"><\/script>')</script>
-
+<script type="text/javascript"
+        src="{{ url_for('static', filename='js/libs/plupload.js') }}"></script>
+<script type="text/javascript"
+        src="{{ url_for('static', filename='js/libs/plupload.html5.js') }}"></script>
+<script type="text/javascript"
+        src="{{ url_for('static', filename='js/libs/plupload.html4.js') }}"></script>
 
 <!-- scripts concatenated and minified via ant build script-->
 <script defer src="/static/js/plugins.js"></script>

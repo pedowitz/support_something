@@ -1,24 +1,17 @@
 CSRF_SECRET_KEY = ''
 SESSION_KEY = ''
 
-class _Config(object):
-    DEBUG = True
-    TESTING = False
-    DATABASE_URI = 'sqlite://:memory:'
-    SECRET_KEY = CSRF_SECRET_KEY
-    CSRF_SESSION_LKEY = SESSION_KEY
-    CSRF_ENABLED = True
+DEBUG = True
+TESTING = False
+DATABASE_URI = 'sqlite://:memory:'
+SECRET_KEY = CSRF_SECRET_KEY
+CSRF_SESSION_LKEY = SESSION_KEY
+CSRF_ENABLED = True
+SECRET_KEY = 'development key'
+DEBUG = True
+FACEBOOK_APP_ID = '188477911223606'
+FACEBOOK_APP_SECRET = '621413ddea2bcc5b2e83d42fc40495de'
+AWS_ACCESS_KEY_ID = ''
+AWS_SECRET_ACCESS_KEY = ''
 
-class Prod(_Config):
-    DATABASE_URI = ''
-    DEBUG = False
-    TESTING = False
-
-class Dev(_Config):
-    NAME = "Dev"
-    DEBUG = True
-    DATABASE_URI = ''
-    
-    
-class Testing(_Config):
-    TESTING = True
+print 'local settings done'
