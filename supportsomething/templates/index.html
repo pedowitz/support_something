@@ -15,15 +15,11 @@
                     Upload</a>
             </p>
             <ul class="stream">
+                {% for img in imgs %}
                 <li>
-                    <img src="https://support-something.s3.amazonaws.com/imgs/10903890-2916-4a29-9fbd-1442a123da1c-Photo_on_2012-06-08_at_14.16.jpg"/>
+                    <img src="{{ img }}"/>
                 </li>
-                <li>
-                    <img src="https://support-something.s3.amazonaws.com/imgs/10903890-2916-4a29-9fbd-1442a123da1c-Photo_on_2012-06-08_at_14.16.jpg"/>
-                </li>
-                <li>
-                    <img src="https://support-something.s3.amazonaws.com/imgs/10903890-2916-4a29-9fbd-1442a123da1c-Photo_on_2012-06-08_at_14.16.jpg"/>
-                </li>
+                {% endfor %}
             </ul>
         </div>
     </div>

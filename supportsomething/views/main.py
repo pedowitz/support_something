@@ -1,9 +1,22 @@
+from boto.s3.connection import S3Connection
 from flask import render_template, request
 from supportsomething import app
+from uuid import uuid4
+
+conn = S3Connection(aws_access_key_id=app.config['AWS_ACCESS_KEY_ID'],
+                    aws_secret_access_key=app.config[
+                                          'AWS_SECRET_ACCESS_KEY'])
+bucket = conn.get_bucket('support-something')
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    imgs = []
+    for key in bucket.list('imgs'):
+        if key.name != 'imgs/':
+            print key.name
+            imgs.append('https://support-something.s3.amazonaws.com/%s' % key.name)
+
+    return render_template('index.html', imgs=imgs)
 
 
 @app.route('/upload')
@@ -21,14 +34,7 @@ def upload_image():
     return url
 
 
-from boto.s3.connection import S3Connection
-from uuid import uuid4
-
 def _upload_to_s3(file):
-    conn = S3Connection(aws_access_key_id=app.config['AWS_ACCESS_KEY_ID'],
-                        aws_secret_access_key=app.config[
-                                              'AWS_SECRET_ACCESS_KEY'])
-    bucket = conn.get_bucket('support-something')
 
     key_name = '%s/%s-%s' % (
         'imgs', str(uuid4()),
