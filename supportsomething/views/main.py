@@ -2,6 +2,7 @@ from boto.s3.connection import S3Connection
 from flask import render_template, request
 from supportsomething import app
 from uuid import uuid4
+from dateutil import parser as date_parser
 
 conn = S3Connection(aws_access_key_id=app.config['AWS_ACCESS_KEY_ID'],
                     aws_secret_access_key=app.config[
@@ -13,9 +14,10 @@ def index():
     imgs = []
     for key in bucket.list('imgs'):
         if key.name != 'imgs/':
-            print key.name
-            imgs.append('https://support-something.s3.amazonaws.com/%s' % key.name)
+            print key.name, date_parser.parse(key.last_modified)
+            imgs.append(('https://support-something.s3.amazonaws.com/%s' % key.name, date_parser.parse(key.last_modified)))
 
+    imgs = sorted(imgs, key=lambda img: img[1], reverse=True)
     return render_template('index.html', imgs=imgs)
 
 
