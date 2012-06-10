@@ -28,7 +28,7 @@ $(document).ready(function () {
     if ($('#upload').length > 0) {
         console.log('uploader');
         var uploader = new plupload.Uploader({
-            runtimes:'html4',
+            runtimes:'html5,html4',
             browse_button:'upload',
             max_file_size:'5mb',
             url:'/upload_image',
