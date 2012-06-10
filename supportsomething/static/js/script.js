@@ -39,13 +39,17 @@ $(document).ready(function () {
 
         uploader.bind('QueueChanged', function () {
             uploader.start();
-            //$('.uploader').attr('src', '/static/img/ajax-loader.gif');
-        });
-        uploader.bind('FileUploaded', function (uploader, file, response) {
-            //$('.uploader').attr('src', response.response);
-            var img = '<img src="' + response.response + '" />'
+            var img = '<img src="/static/img/ajax-loader.gif" />'
             var li = '<li>' + img + '</li>'
             $('.stream li:first').before(li);
+            $('#upload i').removeClass('icon-upload');
+            $('#upload i').addClass('icon-loading');
+        });
+
+        uploader.bind('FileUploaded', function (uploader, file, response) {
+            $('.stream li:first img').attr('src', response.response);
+            $('#upload i').addClass('icon-upload');
+            $('#upload i').removeClass('icon-loading');
         });
 
         uploader.bind('Error', function (uploader, error) {
