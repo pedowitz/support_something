@@ -8,12 +8,25 @@
         <div id="stream_canvas">
             <h1>Support Something</h1>
 
+            {% if fb %}
+            <div class="alert alert-success">
+                Upload your support below.
+            </div>
             <p>
-                <a href="#" id="upload"
-                   class="btn btn-large btn-primary"><i
-                        class="icon-upload icon-white"></i>
-                    Upload</a>
+                <a href="#" id="upload" class="btn btn-large btn-primary"><i
+                        class="icon-upload icon-white"></i> Upload</a>
             </p>
+            {% else %}
+            <!-- login w/facebook -->
+            <div class="alert alert-info">
+                Sign in with facebook to upload your show of support.
+            </div>
+            <p>
+                <a href="{{ url_for('login') }}" class="fb-login">&nbsp;</a>
+            </p>
+            {% endif %}
+
+
             <ul class="stream">
                 {% for img in imgs %}
                 <li>
@@ -27,4 +40,27 @@
         <div id="map_canvas"></div>
     </div>
 </div>
+{% endblock %}
+{% block footer_js %}
+<script type="text/javascript">
+    $(document).ready(function () {
+        var lat = {{ latitude }};
+        var lng = {{ longitude }};
+        var myLatlng = new google.maps.LatLng(lat, lng);
+
+        var myOptions = {
+            center:myLatlng,
+            zoom:14,
+            mapTypeId:google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map_canvas"),
+                myOptions);
+
+        var marker = new google.maps.Marker({
+            position:myLatlng,
+            title:"Hello World!"
+        });
+        marker.setMap(map);
+    });
+</script>
 {% endblock %}

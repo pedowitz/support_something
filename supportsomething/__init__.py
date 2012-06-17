@@ -1,4 +1,3 @@
-import os
 from flask import Flask
 import models
 
@@ -11,5 +10,3 @@ models.init(app)
 
 # Import modules
 import views
-    
-    

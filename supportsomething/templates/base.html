@@ -8,42 +8,9 @@
     <meta name="author" content="">
 
     <!-- Le styles -->
-    <link href="/static/css/bootstrap.css" rel="stylesheet">
-    <style>
-        html, body, #map_canvas {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            width: 100%;
-            overflow-y: hidden;
-        }
-
-        .span4 {
-            overflow-y: auto;
-        }
-
-        ul.stream {
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .stream li {
-            padding: 10px 0;
-        }
-
-        .stream img {
-            max-width: 80%;
-        }
-
-        .icon-loading {
-            background-position: 0;
-            background-image: url({{ url_for('static', filename='img/14x14-loading.gif') }});
-            height: 16px;
-            width: 16px;
-        }
-    </style>
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
     <link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/static/css/style.css" rel="stylesheet">
 
 
     <script type="text/javascript"
@@ -88,8 +55,12 @@
         src="{{ url_for('static', filename='js/libs/plupload.html4.js') }}"></script>
 
 <!-- scripts concatenated and minified via ant build script-->
+<script type="text/javascript">
+    var map;
+</script>
 <script defer src="/static/js/plugins.js"></script>
 <script defer src="/static/js/script.js"></script>
+{% block footer_js %}{% endblock %}
 <!-- end scripts-->
 
 
