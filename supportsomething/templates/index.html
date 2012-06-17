@@ -44,6 +44,7 @@
 {% block footer_js %}
 <script type="text/javascript">
     $(document).ready(function () {
+        {% if fb %}
         var lat = {{ latitude }};
         var lng = {{ longitude }};
         var myLatlng = new google.maps.LatLng(lat, lng);
@@ -61,6 +62,7 @@
             title:"Hello World!"
         });
         marker.setMap(map);
+        {% endif %}
     });
 </script>
 {% endblock %}
